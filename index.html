@@ -14,6 +14,10 @@
         input, textarea { background: #121224; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 4px; font-size: 0.95rem; outline: none; width: 100%; }
         input:focus, textarea:focus { border-color: #00f0ff; }
         textarea { height: 180px; resize: vertical; font-family: monospace; }
+        
+        /* Định dạng cho chữ placeholder mờ mờ ở nền */
+        textarea::placeholder { color: #555566; font-style: italic; opacity: 1; }
+        
         .hint { color: #888; font-size: 0.8rem; font-style: italic; display: block; margin-top: 5px; }
         button { background: #ff007f; color: #fff; border: none; padding: 12px; font-weight: bold; font-size: 1rem; border-radius: 4px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px #ff007f; margin-top: 10px; width: 100%; }
         button:active { background: #ff55a5; }
@@ -35,8 +39,8 @@
 
         <div class="form-group">
             <label for="studentRawData">2. Dán danh sách Họ tên và SĐT vào đây:</label>
-            <textarea id="studentRawData" placeholder="Dán danh sách vào đây..."></textarea>
-            <span class="hint">* SĐT dán vào tự động chuẩn hóa về dạng khoảng cách thưa dễ nhìn (Ví dụ: 0987 655 562).</span>
+            <textarea id="studentRawData" placeholder="Nguyễn An Nhiên (Bơ)   039 696 3955&#10;Nguyễn Trung Đức (Bon)  033 980 4981"></textarea>
+            <span class="hint">* SĐT dán vào tự động chuẩn hóa về dạng khoảng cách thưa dễ nhìn (Ví dụ: 0396 963 955).</span>
         </div>
 
         <button onclick="generateHTML()">⚡ Tạo Ứng Dụng Điểm Danh ⚡</button>
@@ -52,29 +56,9 @@
     </div>
 
     <script>
+        // Bỏ hẳn phần nạp dữ liệu đè chữ ở window.onload cũ để ô nhập luôn trống trải và hiện chữ mờ nền lên
         window.onload = function() {
-            document.getElementById('studentRawData').value = 
-`Nguyễn An Nhiên (Bơ)\t039 696 3955
-Nguyễn Trung Đức (Bon)\t033 980 4981
-Đặng Đình Bách\t090 451 1462
-Lâm Duy Anh\t090 223 9258
-Vũ Nguyễn Hải Anh 23/11/20\t033 607 6895
-Lan Anh em Tuấn Anh B
-Đặng Khánh Ngân\t094 209 3566
-Trần Lê Tuệ Linh\t098 874 2202
-Nguyễn Trâm Anh\t091 940 3848
-Nguyễn Tú Anh\t091 940 3848
-Nguyễn Hà My\t094 368 1990
-Hoàng Ngọc Phương Linh \t091 273 1673`;
-        }
-
-        function formatPhone(phoneStr) {
-            if (!phoneStr || phoneStr === "Chưa có") return "Chưa có";
-            let clean = phoneStr.replace(/\s+/g, '');
-            if (clean.length === 10) {
-                return clean.substring(0, 4) + " " + clean.substring(4, 7) + " " + clean.substring(7);
-            }
-            return phoneStr;
+            document.getElementById('studentRawData').value = "";
         }
 
         function generateHTML() {
@@ -116,7 +100,7 @@ Hoàng Ngọc Phương Linh \t091 273 1673`;
                 studentArray.push({
                     id: idCounter++,
                     name: name,
-                    phone: phone, // Lưu gốc dính liền, khi hiển thị ứng dụng sẽ tự chia dấu cách
+                    phone: phone,
                     status: "present",
                     note: ""
                 });
@@ -162,7 +146,7 @@ Hoàng Ngọc Phương Linh \t091 273 1673`;
             template += ".btn-present { background: #003311; color: #00ff66; border: 1px solid #00ff66; }\n";
             template += ".btn-present.active { background: #00ff66; color: #000; box-shadow: 0 0 10px #00ff66; }\n";
             template += ".note-select { flex: 1.5; background: #1a1a3a; color: #00f0ff; border: 1px solid #00f0ff; padding: 9px 3px; font-size: 0.8rem; border-radius: 3px; outline: none; }\n";
-            template += "</style>\nhead>\n<body>\n";
+            template += "</style>\n</head>\n<body>\n";
             template += "<h2>Hệ Thống Điểm Danh</h2>\n<div class=\"class-stats\" id=\"classStats\">Sĩ số: 0 | Có mặt: 0 | Vắng: 0</div>\n";
             template += "<div class=\"class-panel\">\n<h3>Danh Sách: " + className + "</h3>\n<br>\n";
             template += "<div class=\"add-student-box\">\n<input type=\"text\" id=\"newStudentName\" placeholder=\"Dòng 1: Nhập họ và tên...\">\n";
@@ -174,20 +158,14 @@ Hoàng Ngọc Phương Linh \t091 273 1673`;
             template += "<div class=\"student-list\" id=\"studentList\"></div>\n</div>\n";
             template += "<script>\nconst defaultStudents = " + studentsJson + ";\n";
             template += "let myClass = { name: \"" + className + "\", students: [] };\n";
-            
-            // Tách hàm định dạng SĐT phụ để nhúng vào code con
             template += "function displayPhone(p) { if(!p || p==='Chưa có') return 'Chưa có'; let c = p.replace(/\\s+/g, ''); if(c.length===10) return c.substring(0,4)+' '+c.substring(4,7)+' '+c.substring(7); return p; }\n";
-            
             template += "function loadData() { const saved = localStorage.getItem('" + storageKey + "'); if(saved) { myClass.students = JSON.parse(saved); } else { myClass.students = defaultStudents; saveData(); } }\n";
             template += "function saveData() { localStorage.setItem('" + storageKey + "', JSON.stringify(myClass.students)); }\n";
             template += "window.onload = function() { loadData(); renderStudentList(); renderAbsentList(); updateStats(); };\n";
             template += "function updateStats() { const total = myClass.students.length; const absent = myClass.students.filter(s => s.status === 'absent').length; const present = total - absent; document.getElementById('classStats').innerText = 'Sĩ số: ' + total + ' | Có mặt: ' + present + ' | Vắng: ' + absent; }\n";
             template += "function addNewStudent() { const nameInput = document.getElementById('newStudentName'); const phoneInput = document.getElementById('newStudentPhone'); const name = nameInput.value.trim(); const phone = phoneInput.value.trim().replace(/\\s+/g, '') || 'Chưa có'; if(name === '') { alert('Vui lòng nhập tên!'); return; } const nextId = myClass.students.length > 0 ? Math.max(...myClass.students.map(s => s.id)) + 1 : 1; myClass.students.push({ id: nextId, name: name, phone: phone, status: 'present', note: '' }); saveData(); nameInput.value = ''; phoneInput.value = ''; renderStudentList(); renderAbsentList(); updateStats(); }\n";
             template += "function deleteStudent(id, name) { if(confirm('Bạn có chắc chắn muốn XÓA học sinh ' + name + '?')) { myClass.students = myClass.students.filter(s => s.id !== id); myClass.students.forEach((s, idx) => { s.id = idx + 1; }); saveData(); renderStudentList(); renderAbsentList(); updateStats(); } }\n";
-            
-            // Đoạn render thông minh sử dụng hàm displayPhone(student.phone) để tạo khoảng trống tự động
             template += "function renderStudentList() { const container = document.getElementById('studentList'); container.innerHTML = ''; myClass.students.forEach(student => { const card = document.createElement('div'); card.className = 'student-card status-' + student.status; const absentActive = student.status === 'absent' ? 'active' : ''; const presentActive = student.status === 'present' ? 'active' : ''; card.innerHTML = '<div class=\"student-info-row\"><div class=\"student-meta\"><span class=\"student-name\">' + student.id + '. ' + student.name + '</span><span class=\"student-phone\">SĐT: ' + displayPhone(student.phone) + '</span></div><div class=\"student-actions-right\"><button class=\"btn-call\" onclick=\"callStudent(\\'' + student.phone + '\\')\">📞</button><button class=\"btn-delete\" onclick=\"deleteStudent(' + student.id + ', \\'' + student.name + '\\')\">🗑️</button></div></div><div class=\"student-controls-row\"><button class=\"btn-action btn-absent ' + absentActive + '\" onclick=\"updateStatus(' + student.id + ', \\'absent\\')\">Vắng</button><button class=\"btn-action btn-present ' + presentActive + '\" onclick=\"updateStatus(' + student.id + ', \\'present\\')\">Đi Học</button><select class=\"note-select\" onchange=\"updateNote(' + student.id + ', this.value)\"><option value=\"\" ' + (student.note===''?'selected':'') + '>-- Ghi chú --</option><option value=\"Không phép\" ' + (student.note==='Không phép'?'selected':'') + '>Không phép</option><option value=\"Có phép\" ' + (student.note==='Có phép'?'selected':'') + '>Có phép</option><option value=\"Muộn\" ' + (student.note==='Muộn'?'selected':'') + '>Đi muộn</option><option value=\"Ốm\" ' + (student.note==='Ốm'?'selected':'') + '>Ốm đau</option></select></div>'; container.appendChild(card); }); }\n";
-            
             template += "function updateStatus(id, status) { const student = myClass.students.find(s => s.id === id); student.status = status; saveData(); renderStudentList(); renderAbsentList(); updateStats(); }\n";
             template += "function updateNote(id, value) { const student = myClass.students.find(s => s.id === id); student.note = value; saveData(); renderAbsentList(); }\n";
             template += "function renderAbsentList() { const listContainer = document.getElementById('absentList'); listContainer.innerHTML = ''; const absentStudents = myClass.students.filter(s => s.status === 'absent'); if(absentStudents.length === 0) { listContainer.innerHTML = '<li><em>Chưa có học sinh vắng</em></li>'; return; } absentStudents.forEach(s => { const li = document.createElement('li'); const noteText = s.note ? ' (' + s.note + ')' : ' (Chưa rõ lý do)'; li.innerText = '• ' + s.name + noteText; listContainer.appendChild(li); }); }\n";

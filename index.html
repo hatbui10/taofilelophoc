@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trình Tạo Ứng Dụng Điểm Danh</title>
+    <title>Trình Tạo Ứng Dụng Đánh Giá Học Tập</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #050508; color: #e0e0e6; padding: 30px 15px; }
@@ -14,10 +14,7 @@
         input, textarea { background: #121224; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 4px; font-size: 0.95rem; outline: none; width: 100%; }
         input:focus, textarea:focus { border-color: #00f0ff; }
         textarea { height: 180px; resize: vertical; font-family: monospace; }
-        
-        /* Định dạng cho chữ placeholder mờ mờ ở nền */
         textarea::placeholder { color: #555566; font-style: italic; opacity: 1; }
-        
         .hint { color: #888; font-size: 0.8rem; font-style: italic; display: block; margin-top: 5px; }
         button { background: #ff007f; color: #fff; border: none; padding: 12px; font-weight: bold; font-size: 1rem; border-radius: 4px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px #ff007f; margin-top: 10px; width: 100%; }
         button:active { background: #ff55a5; }
@@ -34,65 +31,63 @@
     <div class="container">
         <div class="form-group">
             <label for="className">1. Nhập Tên Lớp:</label>
-            
             <select id="className">
-            <option value="SKY-KID">SKY-KID  T2-237</option>
-            <option value="CLOUD-KID">CLOUD-KID  T2-237</option>
-            <option value="SUPER VIP">SUPER VIP</option>
-            <option value="SMART-KID">SMART-KID  T2-237</option>
-            <option value="OZON-L2+3/Ngô Hằng">OZON-L2+3/Ngô Hằng T3-158</option>
-            <option value="MICKEY - L2+3/Thị Phương"> MICKEY - L2+3/Thị Phương T3-158   </option>
-            <option value="OXFORD  L4/Thu Phương">OXFORD  L4/Thu Phương </option>
-            <option value="QUEST L4 Thu Phương">QUEST L4 Thu Phương T3-158</option>
-            <option value="CAMBRIDGE - L4/Nhung">CAMBRIDGE - L4/Nhung  T4-158</option>
-            <option value="KING - L4/Thu Phương">KING - L4/Thu Phương</option>
-            <option value="GALAXY - L4/Minh Phương">GALAXY - L4/Minh Phương</option>
-            <option value="KIND L5 /Tân">KIND L5 /Tân</option>
-            <option value="APOLLO L5/Yến ">APOLLO L5/Yến </option>
-            <option value="LIKE L5/Thu Phương">LIKE L5/Thu Phương</option>
-            <option value="SMILE-L6/Hà An">SMILE-L6/Hà An</option>
-            <option value="STAR-L6/Thanh Thảo">STAR-L6/Thanh Thảo</option>
-            <option value="GOOD-L6/ Hà An ">GOOD-L6/ Hà An </option>
-            <option value="MARS - L6/Ngô Hằng">MARS - L6/Ngô Hằng</option>
-            <option value="PARIS-L6/Minh Phương">PARIS-L6/Minh Phương</option>
-            <option value="EVIC">EVIC</option>
-            <option value="KID E7">KID E7</option>
-            <option value="BOSS-VIP - L7/Lê Thu Hà">BOSS-VIP - L7/Lê Thu Hà</option>
-            <option value="MOON-L7/Trà My">MOON-L7/Trà My</option>
-            <option value="ILA-L7 - Thu Hà">ILA-L7 - Thu Hà</option>
-            <option value="DELTA-L7 - Phương">DELTA-L7 - Phương</option>
-            <option value="Happy - L8/Mai Ly">Happy - L8/Mai Ly</option>
-            <option value="Sun - L8/Mai Ly">Sun - L8/Mai Ly</option>
-            <option value="High - L8/Thu Hà">High - L8/Thu Hà</option>
-            <option value="HOPE-L8 TRÀ MY">HOPE-L8 TRÀ MY</option>
-            <option value="BIG-L9/Mai Ly">BIG-L9/Mai Ly</option>
-            <option value="SUPER - Thu Hà - L9">SUPER - Thu Hà - L9</option>
-            <option value="SEA - L9/Thu Hà">SEA - L9/Thu Hà</option>
-            <option value="CLC-L9/Thu Hà">CLC-L9/Thu Hà</option>
+                <option value="SKY-KID">SKY-KID  T2-237</option>
+                <option value="CLOUD-KID">CLOUD-KID  T2-237</option>
+                <option value="SUPER VIP">SUPER VIP</option>
+                <option value="SMART-KID">SMART-KID  T2-237</option>
+                <option value="OZON-L2+3/Ngô Hằng">OZON-L2+3/Ngô Hằng T3-158</option>
+                <option value="MICKEY - L2+3/Thị Phương"> MICKEY - L2+3/Thị Phương T3-158   </option>
+                <option value="OXFORD  L4/Thu Phương">OXFORD  L4/Thu Phương </option>
+                <option value="QUEST L4 Thu Phương">QUEST L4 Thu Phương T3-158</option>
+                <option value="CAMBRIDGE - L4/Nhung">CAMBRIDGE - L4/Nhung  T4-158</option>
+                <option value="KING - L4/Thu Phương">KING - L4/Thu Phương</option>
+                <option value="GALAXY - L4/Minh Phương">GALAXY - L4/Minh Phương</option>
+                <option value="KIND L5 /Tân">KIND L5 /Tân</option>
+                <option value="APOLLO L5/Yến ">APOLLO L5/Yến </option>
+                <option value="LIKE L5/Thu Phương">LIKE L5/Thu Phương</option>
+                <option value="SMILE-L6/Hà An">SMILE-L6/Hà An</option>
+                <option value="STAR-L6/Thanh Thảo">STAR-L6/Thanh Thảo</option>
+                <option value="GOOD-L6/ Hà An ">GOOD-L6/ Hà An </option>
+                <option value="MARS - L6/Ngô Hằng">MARS - L6/Ngô Hằng</option>
+                <option value="PARIS-L6/Minh Phương">PARIS-L6/Minh Phương</option>
+                <option value="EVIC">EVIC</option>
+                <option value="KID E7">KID E7</option>
+                <option value="BOSS-VIP - L7/Lê Thu Hà">BOSS-VIP - L7/Lê Thu Hà</option>
+                <option value="MOON-L7/Trà My">MOON-L7/Trà My</option>
+                <option value="ILA-L7 - Thu Hà">ILA-L7 - Thu Hà</option>
+                <option value="DELTA-L7 - Phương">DELTA-L7 - Phương</option>
+                <option value="Happy - L8/Mai Ly">Happy - L8/Mai Ly</option>
+                <option value="Sun - L8/Mai Ly">Sun - L8/Mai Ly</option>
+                <option value="High - L8/Thu Hà">High - L8/Thu Hà</option>
+                <option value="HOPE-L8 TRÀ MY">HOPE-L8 TRÀ MY</option>
+                <option value="BIG-L9/Mai Ly">BIG-L9/Mai Ly</option>
+                <option value="SUPER - Thu Hà - L9">SUPER - Thu Hà - L9</option>
+                <option value="SEA - L9/Thu Hà">SEA - L9/Thu Hà</option>
+                <option value="CLC-L9/Thu Hà">CLC-L9/Thu Hà</option>
                 <option value="TRY-L9">TRY-L9</option>
-            <option value="WIN - L10/Thu Hà">WIN - L10/Thu Hà</option>
-            <option value="SMART - L10/Hà An">SMART - L10/Hà An</option>
-            <option value="CLOUD - L10/Hà An">CLOUD - L10/Hà An</option>
-            <option value="TRY - L10/Thu Hà">TRY - L10/Thu Hà</option>
-            <option value="CAN - L11/Lê Thu Hà">CAN - L11/Lê Thu Hà</option>
-            <option value="VICTORYA">VICTORYA</option>
-            <option value="OCEAN-L11">OCEAN-L11</option>
-            <option value="ATHENA-L12/Mai Ly">ATHENA-L12/Mai Ly</option>
-            <option value="IELTS-WONDERFUL/Thu Hà">IELTS-WONDERFUL/Thu Hà</option>
-            <option value="SPACEX">SPACEX</option>
-            <option value="FUN - IE-L12/Lê Thu Hà">FUN - IE-L12/Lê Thu Hà</option>
-            <option value="L12-BLUE">L12-BLUE</option>
-            
-        </select>
+                <option value="WIN - L10/Thu Hà">WIN - L10/Thu Hà</option>
+                <option value="SMART - L10/Hà An">SMART - L10/Hà An</option>
+                <option value="CLOUD - L10/Hà An">CLOUD - L10/Hà An</option>
+                <option value="TRY - L10/Thu Hà">TRY - L10/Thu Hà</option>
+                <option value="CAN - L11/Lê Thu Hà">CAN - L11/Lê Thu Hà</option>
+                <option value="VICTORYA">VICTORYA</option>
+                <option value="OCEAN-L11">OCEAN-L11</option>
+                <option value="ATHENA-L12/Mai Ly">ATHENA-L12/Mai Ly</option>
+                <option value="IELTS-WONDERFUL/Thu Hà">IELTS-WONDERFUL/Thu Hà</option>
+                <option value="SPACEX">SPACEX</option>
+                <option value="FUN - IE-L12/Lê Thu Hà">FUN - IE-L12/Lê Thu Hà</option>
+                <option value="L12-BLUE">L12-BLUE</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="studentRawData">2. Dán danh sách Họ tên và SĐT vào đây:</label>
             <textarea id="studentRawData" placeholder="Nguyễn An Nhiên (Bơ)   039 696 3955&#10;Nguyễn Trung Đức (Bon)  033 980 4981"></textarea>
-            <span class="hint">* SĐT dán vào tự động chuẩn hóa về dạng khoảng cách thưa dễ nhìn (Ví dụ: 0396 963 955).</span>
+            <span class="hint">* Hệ thống sẽ tự động phân tách Tên và SĐT một cách thông minh.</span>
         </div>
 
-        <button onclick="generateHTML()">⚡ Tạo Ứng Dụng Điểm Danh ⚡</button>
+        <button onclick="generateHTML()">⚡ Tạo Ứng Dụng Đánh Giá Học Tập ⚡</button>
 
         <div class="result-box" id="resultBox">
             <div class="result-header">
@@ -105,7 +100,6 @@
     </div>
 
     <script>
-        // Bỏ hẳn phần nạp dữ liệu đè chữ ở window.onload cũ để ô nhập luôn trống trải và hiện chữ mờ nền lên
         window.onload = function() {
             document.getElementById('studentRawData').value = "";
         }
@@ -150,17 +144,20 @@
                     id: idCounter++,
                     name: name,
                     phone: phone,
-                    status: "present",
-                    note: ""
+                    grammar: "",
+                    communication: "",
+                    attitude: "",
+                    progress: ""
                 });
             });
 
             const studentsJson = JSON.stringify(studentArray, null, 4);
-            const storageKey = "classData_" + encodeURIComponent(className);
+            const storageKey = "classData_" + encodeURIComponent(className) + "_v4";
 
+            // Bắt đầu dựng template mã nguồn ứng dụng con
             let template = "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n<meta charset=\"UTF-8\">\n";
             template += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-             template += "<title>Lớp " + className + "</title>\n<style>\n";
+            template += "<title>Lớp " + className + "</title>\n<style>\n";
             template += "* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }\n";
             template += "body { background-color: #050508; color: #e0e0e6; padding: 30px 3px 20px 3px; }\n";
             template += "h2, h3 { text-align: center; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }\n";
@@ -171,16 +168,8 @@
             template += ".add-student-box { display: flex; flex-direction: column; gap: 10px; background: #0d0d1a; border: 1px solid #ffd700; border-radius: 4px; padding: 12px 10px; margin-bottom: 15px; }\n";
             template += ".add-student-box input { width: 100%; background: #050508; border: 1px solid #333; color: #fff; padding: 12px 10px; font-size: 0.9rem; border-radius: 4px; outline: none; }\n";
             template += ".btn-add { background: #ffd700; color: #000; border: none; padding: 12px; font-weight: bold; font-size: 0.9rem; border-radius: 4px; cursor: pointer; text-transform: uppercase; }\n";
-            template += ".absent-section { background: rgba(255, 0, 127, 0.05); border: 1px dashed #ff007f; border-radius: 4px; padding: 10px; margin-bottom: 20px; }\n";
-            template += ".absent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }\n";
-            template += ".absent-title { color: #ff007f; font-weight: bold; font-size: 0.9rem; }\n";
-            template += ".copy-btn { background: #ff007f; color: #fff; border: none; padding: 6px 12px; font-size: 0.8rem; font-weight: bold; border-radius: 3px; cursor: pointer; box-shadow: 0 0 8px #ff007f; }\n";
-            template += ".absent-list { list-style: none; font-size: 0.9rem; color: #ff55a5; line-height: 1.4; }\n";
-            template += ".absent-list li { padding: 3px 0; border-bottom: 1px solid rgba(255, 0, 127, 0.1); }\n";
             template += ".student-list { display: flex; flex-direction: column; gap: 10px; }\n";
             template += ".student-card { background: #121224; border: 1px solid #333; border-left: 4px solid #00f0ff; border-radius: 4px; padding: 12px 10px; display: flex; flex-direction: column; gap: 10px; }\n";
-            template += ".student-card.status-absent { border-left-color: #ff007f; background: #1a0813; }\n";
-            template += ".student-card.status-present { border-left-color: #00ff66; background: #081a10; }\n";
             template += ".student-info-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px solid #222; padding-bottom: 6px; }\n";
             template += ".student-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; }\n";
             template += ".student-name { font-weight: bold; font-size: 0.95rem; color: #fff; }\n";
@@ -188,38 +177,33 @@
             template += ".student-actions-right { display: flex; gap: 5px; }\n";
             template += ".btn-call { background: #ffd700; color: #000; padding: 8px 12px; font-size: 0.9rem; border: none; border-radius: 4px; cursor: pointer; box-shadow: 0 0 5px #ffd700; }\n";
             template += ".btn-delete { background: #4a0000; color: #ff3333; border: 1px solid #ff3333; padding: 8px 10px; font-size: 0.9rem; border-radius: 4px; cursor: pointer; }\n";
-            template += ".student-controls-row { display: flex; gap: 6px; align-items: center; }\n";
-            template += ".btn-action { flex: 1; padding: 10px 3px; font-size: 0.8rem; font-weight: bold; border: none; border-radius: 3px; cursor: pointer; text-align: center; color: #fff; background: #333; }\n";
-            template += ".btn-absent { background: #4a0025; color: #ff007f; border: 1px solid #ff007f; }\n";
-            template += ".btn-absent.active { background: #ff007f; color: #fff; box-shadow: 0 0 10px #ff007f; }\n";
-            template += ".btn-present { background: #003311; color: #00ff66; border: 1px solid #00ff66; }\n";
-            template += ".btn-present.active { background: #00ff66; color: #000; box-shadow: 0 0 10px #00ff66; }\n";
-            template += ".note-select { flex: 1.5; background: #1a1a3a; color: #00f0ff; border: 1px solid #00f0ff; padding: 9px 3px; font-size: 0.8rem; border-radius: 3px; outline: none; }\n";
+            template += ".student-controls-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }\n";
+            template += "@media (min-width: 350px) { .student-controls-row { grid-template-columns: repeat(4, 1fr); } }\n";
+            template += ".note-select { background: #1a1a3a; color: #00f0ff; border: 1px solid #00f0ff; padding: 8px 2px; font-size: 0.75rem; border-radius: 3px; outline: none; width: 100%; text-align: center; }\n";
+            template += ".note-select.status-sel { color: #ffd700; border-color: #ffd700; }\n";
             template += "</style>\n</head>\n<body>\n";
-            template += "<h2>Lớp: " + className + "</h2>\n<div class=\"class-stats\" id=\"classStats\">Sĩ số: 0 | Có mặt: 0 | Vắng: 0</div>\n";
+            template += "<h2>Lớp: " + className + "</h2>\n<div class=\"class-stats\" id=\"classStats\">Sĩ số: 0</div>\n";
             template += "<div class=\"class-panel\">\n<h3>Danh Sách: " + className + "</h3>\n<br>\n";
             template += "<div class=\"add-student-box\">\n<input type=\"text\" id=\"newStudentName\" placeholder=\"Dòng 1: Nhập họ và tên...\">\n";
             template += "<input type=\"tel\" id=\"newStudentPhone\" placeholder=\"Dòng 2: Nhập số điện thoại...\">\n";
             template += "<button class=\"btn-add\" onclick=\"addNewStudent()\">+ Thêm vào danh sách</button>\n</div>\n";
-            template += "<div class=\"absent-section\">\n<div class=\"absent-header\">\n<span class=\"absent-title\">DANH SÁCH VẮNG </span>\n";
-            template += "<button class=\"copy-btn\" onclick=\"copyAbsentList()\">Copy</button>\n</div>\n";
-            template += "<ul class=\"absent-list\" id=\"absentList\"><li><em>Chưa có học sinh vắng</em></li></ul>\n</div>\n";
             template += "<div class=\"student-list\" id=\"studentList\"></div>\n</div>\n";
             template += "<script>\nconst defaultStudents = " + studentsJson + ";\n";
             template += "let myClass = { name: \"" + className + "\", students: [] };\n";
             template += "function displayPhone(p) { if(!p || p==='Chưa có') return 'Chưa có'; let c = p.replace(/\\s+/g, ''); if(c.length===10) return c.substring(0,4)+' '+c.substring(4,7)+' '+c.substring(7); return p; }\n";
             template += "function loadData() { const saved = localStorage.getItem('" + storageKey + "'); if(saved) { myClass.students = JSON.parse(saved); } else { myClass.students = defaultStudents; saveData(); } }\n";
             template += "function saveData() { localStorage.setItem('" + storageKey + "', JSON.stringify(myClass.students)); }\n";
-            template += "window.onload = function() { loadData(); renderStudentList(); renderAbsentList(); updateStats(); };\n";
-            template += "function updateStats() { const total = myClass.students.length; const absent = myClass.students.filter(s => s.status === 'absent').length; const present = total - absent; document.getElementById('classStats').innerText = 'Sĩ số: ' + total + ' | Có mặt: ' + present + ' | Vắng: ' + absent; }\n";
-            template += "function addNewStudent() { const nameInput = document.getElementById('newStudentName'); const phoneInput = document.getElementById('newStudentPhone'); const name = nameInput.value.trim(); const phone = phoneInput.value.trim().replace(/\\s+/g, '') || 'Chưa có'; if(name === '') { alert('Vui lòng nhập tên!'); return; } const nextId = myClass.students.length > 0 ? Math.max(...myClass.students.map(s => s.id)) + 1 : 1; myClass.students.push({ id: nextId, name: name, phone: phone, status: 'present', note: '' }); saveData(); nameInput.value = ''; phoneInput.value = ''; renderStudentList(); renderAbsentList(); updateStats(); }\n";
-            template += "function deleteStudent(id, name) { if(confirm('Bạn có chắc chắn muốn XÓA học sinh ' + name + '?')) { myClass.students = myClass.students.filter(s => s.id !== id); myClass.students.forEach((s, idx) => { s.id = idx + 1; }); saveData(); renderStudentList(); renderAbsentList(); updateStats(); } }\n";
-           template += "function renderStudentList() { const container = document.getElementById('studentList'); container.innerHTML = ''; myClass.students.forEach(student => { const card = document.createElement('div'); card.className = 'student-card status-' + student.status; const absentActive = student.status === 'absent' ? 'active' : ''; const presentActive = student.status === 'present' ? 'active' : ''; card.innerHTML = '<div class=\"student-info-row\"><div class=\"student-meta\"><span class=\"student-name\">' + student.id + '. ' + student.name + '</span><span class=\"student-phone\">SĐT: ' + displayPhone(student.phone) + '</span></div><div class=\"student-actions-right\"><button class=\"btn-call\" onclick=\"callStudent(\\'' + student.phone + '\\')\">📞</button><button class=\"btn-delete\" onclick=\"deleteStudent(' + student.id + ', \\'' + student.name + '\\')\">🗑️</button></div></div><div class=\"student-controls-row\"><button class=\"btn-action btn-absent ' + absentActive + '\" onclick=\"updateStatus(' + student.id + ', \\'absent\\')\">Vắng</button><button class=\"btn-action btn-present ' + presentActive + '\" onclick=\"updateStatus(' + student.id + ', \\'present\\')\">Đi Học</button><select class=\"note-select\" onchange=\"updateNote(' + student.id + ', this.value)\"><option value=\"\" ' + (student.note===''?'selected':'') + '>-- Ghi chú --</option><option value=\"***\" ' + (student.note==='***'?'selected':'') + '>***</option><option value=\"Đi muộn\" ' + (student.note==='Đi muộn' || student.note==='Muộn'?'selected':'') + '>Đi muộn</option><option value=\"Không nghe máy\" ' + (student.note==='Không nghe máy'?'selected':'') + '>Không nghe máy</option><option value=\"Nghỉ hôm nay\" ' + (student.note==='Nghỉ hôm nay'?'selected':'') + '>Nghỉ hôm nay</option><option value=\"Nghỉ tuần này\" ' + (student.note==='Nghỉ tuần này'?'selected':'') + '>Nghỉ tuần này</option><option value=\"Khi nào đi học sẽ báo lại\" ' + (student.note==='Khi nào đi học sẽ báo lại'?'selected':'') + '>Khi nào đi học sẽ báo lại</option><option value=\"Nghỉ hết tháng 7\" ' + (student.note==='Nghỉ hết tháng 7'?'selected':'') + '>Nghỉ hết tháng 7</option><option value=\"Xin nghỉ hẳn\" ' + (student.note==='Xin nghỉ hẳn'?'selected':'') + '>Xin nghỉ hẳn</option><option value=\"Ốm\" ' + (student.note==='Ốm'?'selected':'') + '>Ốm đau</option></select></div>'; container.appendChild(card); }); }\n";
-              
-            template += "function updateStatus(id, status) { const student = myClass.students.find(s => s.id === id); student.status = status; saveData(); renderStudentList(); renderAbsentList(); updateStats(); }\n";
-            template += "function updateNote(id, value) { const student = myClass.students.find(s => s.id === id); student.note = value; saveData(); renderAbsentList(); }\n";
-            template += "function renderAbsentList() { const listContainer = document.getElementById('absentList'); listContainer.innerHTML = ''; const absentStudents = myClass.students.filter(s => s.status === 'absent'); if(absentStudents.length === 0) { listContainer.innerHTML = '<li><em>Chưa có học sinh vắng</em></li>'; return; } absentStudents.forEach(s => { const li = document.createElement('li'); const noteText = s.note ? ' (' + s.note + ')' : ' (Chưa rõ lý do)'; li.innerText = '• ' + s.name + noteText; listContainer.appendChild(li); }); }\n";
-            template += "function copyAbsentList() { const total = myClass.students.length; const absentStudents = myClass.students.filter(s => s.status === 'absent'); const absentCount = absentStudents.length; const presentCount = total - absentCount; let text = 'LỚP: ' + myClass.name + '\\n'; text += 'Sĩ số: ' + total + ' (Có mặt: ' + presentCount + ' | Vắng: ' + absentCount + ')\\n-------------------------\\nDanh sách vắng:\\n'; if(absentCount === 0) { text += '-Lớp đi học đủ.'; } else { absentStudents.forEach((s, idx) => { const note = s.note ? ' (' + s.note + ')' : ''; text += (idx + 1) + '. ' + s.name + note + '\\n'; }); } navigator.clipboard.writeText(text).then(() => { alert('Đã copy báo cáo lớp ' + myClass.name + '!'); }).catch(() => { alert('Lỗi copy.'); }); }\n";
+            template += "window.onload = function() { loadData(); renderStudentList(); updateStats(); };\n";
+            template += "function updateStats() { document.getElementById('classStats').innerText = 'Sĩ số: ' + myClass.students.length; }\n";
+            template += "function addNewStudent() { const nameInput = document.getElementById('newStudentName'); const phoneInput = document.getElementById('newStudentPhone'); const name = nameInput.value.trim(); const phone = phoneInput.value.trim().replace(/\\s+/g, '') || 'Chưa có'; if(name === '') { alert('Vui lòng nhập tên!'); return; } const nextId = myClass.students.length > 0 ? Math.max(...myClass.students.map(s => s.id)) + 1 : 1; myClass.students.push({ id: nextId, name: name, phone: phone, grammar: '', communication: '', attitude: '', progress: '' }); saveData(); nameInput.value = ''; phoneInput.value = ''; renderStudentList(); updateStats(); }\n";
+            template += "function deleteStudent(id, name) { if(confirm('Bạn có chắc chắn muốn XÓA học sinh ' + name + '?')) { myClass.students = myClass.students.filter(s => s.id !== id); myClass.students.forEach((s, idx) => { s.id = idx + 1; }); saveData(); renderStudentList(); updateStats(); } }\n";
+            template += "function renderStudentList() { const container = document.getElementById('studentList'); container.innerHTML = ''; myClass.students.forEach(student => { const card = document.createElement('div'); card.className = 'student-card'; card.innerHTML = '<div class=\"student-info-row\"><div class=\"student-meta\"><span class=\"student-name\">' + student.id + '. ' + student.name + '</span><span class=\"student-phone\">SĐT: ' + displayPhone(student.phone) + '</span></div><div class=\"student-actions-right\"><button class=\"btn-call\" onclick=\"callStudent(\\'' + student.phone + '\\')\">📞</button><button class=\"btn-delete\" onclick=\"deleteStudent(\' + student.id + \', \\\'\' + student.name + \'\\\')\">🗑️</button></div></div><div class=\"student-controls-row\">' + \n";
+            template += "    '<select class=\"note-select\" onchange=\"updateField(' + student.id + ', \\'grammar\\', this.value)\"><option value=\"\">-- Ngữ pháp --</option><option value=\"Tốt\" ' + (student.grammar==='Tốt'?'selected':'') + '>Ngữ pháp: Tốt</option><option value=\"Khá\" ' + (student.grammar==='Khá'?'selected':'') + '>Ngữ pháp: Khá</option><option value=\"Trung bình\" ' + (student.grammar==='Trung bình'?'selected':'') + '>Ngữ pháp: Trung bình</option><option value=\"Yếu\" ' + (student.grammar==='Yếu'?'selected':'') + '>Ngữ pháp: Yếu</option></select>' + \n";
+            template += "    '<select class=\"note-select\" onchange=\"updateField(' + student.id + ', \\'communication\\', this.value)\"><option value=\"\">-- Giao tiếp --</option><option value=\"Tốt\" ' + (student.communication==='Tốt'?'selected':'') + '>Giao tiếp: Tốt</option><option value=\"Khá\" ' + (student.communication==='Khá'?'selected':'') + '>Giao tiếp: Khá</option><option value=\"Trung bình\" ' + (student.communication==='Trung bình'?'selected':'') + '>Giao tiếp: Trung bình</option><option value=\"Yếu\" ' + (student.communication==='Yếu'?'selected':'') + '>Giao tiếp: Yếu</option></select>' + \n";
+            template += "    '<select class=\"note-select\" onchange=\"updateField(' + student.id + ', \\'attitude\\', this.value)\"><option value=\"\">-- Ý thức --</option><option value=\"Tốt\" ' + (student.attitude==='Tốt'?'selected':'') + '>Ý thức: Tốt</option><option value=\"Khá\" ' + (student.attitude==='Khá'?'selected':'') + '>Ý thức: Khá</option><option value=\"Trung bình\" ' + (student.attitude==='Trung bình'?'selected':'') + '>Ý thức: Trung bình</option><option value=\"Chưa tốt\" ' + (student.attitude==='Chưa tốt'?'selected':'') + '>Ý thức: Chưa tốt</option></select>' + \n";
+            template += "    '<select class=\"note-select status-sel\" onchange=\"updateField(' + student.id + ', \\'progress\\', this.value)\"><option value=\"\">-- Tình trạng --</option><option value=\"Tiến bộ\" ' + (student.progress==='Tiến bộ'?'selected':'') + '>📈 Tiến bộ</option><option value=\"Duy trì\" ' + (student.progress==='Duy trì'?'selected':'') + '>➡️ Duy trì</option><option value=\"Cần cố gắng\" ' + (student.progress==='Cần cố gắng'?'selected':'') + '>⚠️ Cần cố gắng</option><option value=\"Kém đi\" ' + (student.progress==='Kém đi'?'selected':'') + '>📉 Kém đi</option></select>' + \n";
+            template += "    '</div>'; container.appendChild(card); }); }\n";
+            template += "function updateField(id, field, value) { const student = myClass.students.find(s => s.id === id); student[field] = value; saveData(); }\n";
             template += "function callStudent(phone) { if(phone === 'Chưa có') { alert('Chưa có SĐT!'); return; } window.location.href = 'tel:' + phone; }\n";
             template += "</" + "script>\n</body>\n</html>";
 
@@ -232,7 +216,7 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(copyText.value).then(() => {
-                alert("Đã sao chép toàn bộ mã nguồn ứng dụng thành công!");
+                alert("Đã sao chép toàn bộ mã nguồn ứng dụng đánh giá học tập thành công!");
             });
         }
     </script>
